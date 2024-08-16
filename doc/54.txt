@@ -1,0 +1,69 @@
+хуки должны использоваться непосредственно внутри компонента,
+в корне (top level) или в других хуках, не в каких-либо внутренних функциях, операторах (if then) или цыклах, etc
+
+компонент рендерится один раз, перерисовку нужно вызывать
+через хуки
+
+хук useState возвращает массив из двух элементов
+
+функция из хука useState запускает перерисовку компонента
+
+//===============================
+const [selectedTopic, setSelectedTopic] = useState('Please click a button');
+function App() {
+  function handleSelect(selectedButton) {
+    setSelectedTopic(selectedButton);
+    console.log(selectedTopic);
+  }
+    return (
+...
+    );
+}
+
+setSelectedTopic - запоминает что нужно поменять значение, но
+сперва проходит всю функцию App  ..
+тоесть console.log(selectedTopic); - выводит старое а не новое значение
+
+//===============================
+What's the purpose of "State" in React apps?
+
+Компонент, которому принадлежит состояние, а также его дочерние и потомки будут переоцениваться по мере изменения состояния.
+
+//===============================
+import { useState } from 'react';
+ 
+function SomeComponent() {
+  const [selected, setSelected] = useState(false);
+ 
+  function handleClick() {
+    const [selected, setSelected] = useState(true);
+  }
+ 
+  return <button onClick={handleClick}>Select</button>
+}
+
+такой код работать не будет, так-как нарушается
+одно из двух правил хуков
+
+//=============================
+первое правило - хуки могут запускаться только внутри компонентов
+второе - хуки должны определяться в корне (top level) или в других хуках
+
+//=============================
+пример computed values (вычисляемые значения)
+
+function ExampleComponent() {
+  const [count, setCount] = useState(5);
+  const [price, setPrice] = useState(10);
+
+  // Вычисляемое значение
+  const totalCost = count * price;
+
+  return (
+    <div>
+      <p>Общая стоимость: {totalCost}</p>
+    </div>
+  );
+}
+
+обычно относятся к значениям, которые рассчитываются на основе состояния (state) или пропсов (props) компонента. Эти значения не хранятся в состоянии, а вычисляются динамически при каждом рендере компонента
