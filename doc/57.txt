@@ -1,0 +1,22 @@
+//================== toggle style
+
+import React, { useState } from 'react';
+
+export default function App() {
+    const [activeClass, setActiveClass] = useState(false);
+    
+    return (
+        <div>
+            <p className={activeClass ? 'active' : undefined}>Style me!</p>
+            <button onClick={() => {
+                setActiveClass(!activeClass)
+            }
+            }>Toggle style</button>
+        </div>
+    );
+}
+
+//=============== !!
+Первый восклицательный знак (!) преобразует значение в его логическое противоположное. Например, !true станет false, а !0 станет true.
+
+Второй восклицательный знак снова инвертирует значение, возвращая его к исходному логическому состоянию, но уже в виде булева значения. Тоесть из строки или числа или др значения, делается boolean
