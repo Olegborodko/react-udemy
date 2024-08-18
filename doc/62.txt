@@ -1,0 +1,18 @@
+Fragment, не выводит лишний div
+
+import { Fragment } from 'react';
+
+function App(){
+  return (
+    <Fragment>
+      <div>1</div>
+      <div>2</div>
+    </Fragment>
+  );
+}
+
+// ====================== 
+более короткий способ
+
+<>
+</>

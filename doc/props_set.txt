@@ -1,0 +1,51 @@
+function MyComponent({ name, ...otherProps }) {
+  return (
+    <div>
+      <p>Name: {name}</p>
+      <p>Other Props: {JSON.stringify(otherProps)}</p>
+    </div>
+  );
+}
+
+<MyComponent name="Eve" age={28} occupation="Teacher" />
+
+Здесь name будет извлечен, а остальные пропсы (age, occupation) будут собраны в объект otherProps
+
+... - в данном случае собирают все пропсы в новый объект
+
+//==================================
+здесь создается объект props из всех пропсов, по сути тоже-что и сверху
+
+<MyComponent tt={5} />
+
+function MyComponent({...props}){
+  return <p>{props.tt}</p>
+}
+
+//===================================
+здесь у нас объектр props
+
+<MyComponent tt={5} />
+
+function MyComponent(props){
+  return <p>{props.tt}</p>
+}
+
+//=================================== 
+здесь просто деструктуризация
+объектра props и вытягиваение из него свойства tt
+
+<MyComponent tt={5} />
+
+function MyComponent({tt}){
+  return <p>{tt}</p>
+}
+
+//===================================
+не рабочий код
+
+<MyComponent tt={5} />
+
+function MyComponent(tt){
+  return <p>{tt}</p>
+}
