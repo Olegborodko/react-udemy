@@ -1,0 +1,28 @@
+Rendering Content Conditionally
+Условная отрисовка контента
+3 варианта
+
+{!selectedTopic ? <p>Please select a topic</p> : <div>Topic</div>}
+
+{!selectedTopic && <p>Please select a topic</p>}
+
+let tabContent = <p>Please select a topic</p>;
+if (selectedTopic){
+  tabContent =<div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>;
+}
+render(<>
+  {tabContent}
+</>);
+
+//======================================
+JSX может использоваться как перменные
+
+let tabContent = <p>Please select a topic</p>;
