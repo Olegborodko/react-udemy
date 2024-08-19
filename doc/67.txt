@@ -1,0 +1,26 @@
+multiple jsx slots
+
+когда кроме children, нужно передать еще фрагмент JSX
+он передается как props
+
+return (
+    <>
+      <Tabs buttons={
+        <><TabButton isSelected={selectedTopic === 'components'} onClick={() => handleSelect('components')}>Components</TabButton>
+        <TabButton isSelected={selectedTopic === 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+        <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
+        <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton></>
+        }>
+      {tabContent}
+      </Tabs>
+    </>
+  );
+
+export default function Tabs({ children, buttons }) {
+  return <>
+    <menu>
+      {buttons}
+    </menu>
+    {children}
+  </>
+}
