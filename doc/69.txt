@@ -1,0 +1,29 @@
+export default function Button({mode = 'filled', children, Icon, ...props}) {
+ return(
+     <button className={`${mode}-button ${Icon && 'icon-button'}`} {...props}>
+     <span className="button-icon">
+     {Icon && <Icon className='button-icon' />}
+     </span>{children}
+     </button>
+     )
+}
+
+function App() {
+  return (
+     <div id="app">
+          <Button>Default</Button>
+          <Button mode="filled">Filled (Default)</Button>
+          <Button mode="outline">Outline</Button>
+          <Button mode="text">Text</Button>
+          <Button Icon={HomeIcon}>Home</Button>
+          <Button Icon={PlusIcon} mode="text">
+            Add
+          </Button>
+          <Button mode="filled" disabled>
+            Disabled
+          </Button>
+          <Button onClick={() => console.log('Clicked!')}>Click me</Button>
+        </p>
+    </div>
+  );
+}
